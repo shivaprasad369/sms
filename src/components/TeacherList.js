@@ -1,7 +1,7 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
-import { details } from "../store";
+import { addTeacher, details } from "../store";
 import { Link } from "react-router-dom";
 import axios from 'axios'
 export default function TeacherList() {
@@ -12,6 +12,15 @@ export default function TeacherList() {
     console.log(id);
     const res = await axios.delete(`http://localhost:8080/teacherDelete/${id}`);
   };
+  const fetchData=async()=>{
+    
+    const data=await axios.get(`http://localhost:8080/teacher`);
+    dispatch(addTeacher(data.data.data))
+  }
+  useEffect(()=>{
+   
+    fetchData()
+  })
   return (
     <Container>
       <table className="table">
@@ -25,9 +34,10 @@ export default function TeacherList() {
           </tr>
         </thead>
         <tbody>
-          {d.length > 0 ? (
+          <>
+          {d.length > 0 && (
             d.map((data) => (
-              <tr key={data._id}>
+              <tr key={data.id}>
                 <td>{data.name}</td>
                 <td>{data.email}</td>
                 <td>{data.phone}</td>
@@ -58,9 +68,8 @@ export default function TeacherList() {
                 </td>
               </tr>
             ))
-          ) : (
-            <h1 style={{ textAlign: "center" }}>No Data Present</h1>
           )}
+          </>
         </tbody>
       </table>
     </Container>

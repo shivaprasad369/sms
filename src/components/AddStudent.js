@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
-import { addStudent } from "../store";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import { addStudent } from "../store";
 export default function AddStudent() {
   const [studDetail, setStudDetails] = useState({
     name: "",
@@ -13,15 +13,17 @@ export default function AddStudent() {
     course: "",
   });
   const navigate = useNavigate();
-  const students = useSelector((state) => state.sms.studentsData);
+  //const students = useSelector((state) => state.sms.studentsData);
   const dispatch = useDispatch();
   const submithandler = async (e) => {
     e.preventDefault();
     //console.log(students)
-    const response = await axios.post(
+     await axios.post(
       "http://localhost:8080/studCreate",
       studDetail
     );
+    const data=await axios.get(`http://localhost:8080/student`);
+    dispatch(addStudent(data.data.data))
     alert("added successfully");
     navigate("/studList");
   };

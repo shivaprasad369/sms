@@ -10,11 +10,11 @@ const smsSlice=createSlice({
     reducers:{
         addStudent(state,action){
             const newOne=action.payload;
-            // state.studentsData=action.payload;
-            console.log(state.studentsData);
+            //state.studentsData=action.payload;
+            console.log(action.payload);
             newOne.forEach(element => {
-                const exist=state.studentsData.find(({regno})=>regno===element.regno);
-                if(!exist){
+         const exist=state.studentsData.find(({regno})=>regno===element.regno);
+              if(!exist){
                     state.studentsData.push({
                         name:element.name,
                         email:element.email,
@@ -22,9 +22,7 @@ const smsSlice=createSlice({
                         regno:element.regno,
                         course:element.course              
                     });
-                }else{
-                    alert("Please enter unique Regno")
-                };
+                }
                 
             });
         },

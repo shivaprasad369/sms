@@ -7,11 +7,6 @@ import TeacherList from "./components/TeacherList";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Navbar from "./pages/Navbar";
 import Details from "./components/Details";
-import { useEffect } from "react";
-import { useDispatch } from "react-redux";
-import { FetchData } from "./store/actions";
-import { addStudent, addTeacher } from "./store";
-import axios from 'axios';
 function App() {
  
   return (

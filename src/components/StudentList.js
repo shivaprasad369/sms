@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useCallback, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
 import { addStudent, addTeacher, details } from "../store";
@@ -11,8 +11,16 @@ export default function StudentList() {
     console.log(id);
     const res = await axios.delete(`http://localhost:8080/studDelete/${id}`);
   };
-  
-  const data = useSelector((state) => state.sms.studentsData);
+  const fetchData=async()=>{
+    
+    const data=await axios.get(`http://localhost:8080/student`);
+    dispatch(addStudent(data.data.data))
+  }
+  useEffect(()=>{
+   
+    fetchData()
+  })
+  const data= useSelector((state) => state.sms.studentsData);
   const detail = useSelector((state) => state.sms.detail);
   console.log(data);
   return (
@@ -29,7 +37,8 @@ export default function StudentList() {
           </tr>
         </thead>
         <tbody>
-          {data.length > 0 ? (
+          <>
+         {data.length > 0 && (
             data.map((data) => (
               <tr key={data.regno}>
                 <td>{data.name}</td>
@@ -55,7 +64,6 @@ export default function StudentList() {
                         fontWeight: 700,
                       }}
                     >
-                      {" "}
                       View
                     </Link>
                   </button>
@@ -69,9 +77,8 @@ export default function StudentList() {
                 </td>
               </tr>
             ))
-          ) : (
-            <h1 style={{ textAlign: "center" }}>No Data Present</h1>
           )}
+          </>
         </tbody>
       </table>
     </Container>

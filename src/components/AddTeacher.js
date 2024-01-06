@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import styled from "styled-components";
-import { addTeacher } from "../store";
 import { useNavigate } from "react-router-dom";
 import axios from 'axios'
+import { addTeacher } from "../store";
 export default function AddTeacher() {
   const [data, setData] = useState({
     name: "",
@@ -13,17 +13,16 @@ export default function AddTeacher() {
     qualification: "",
   });
   const navigate = useNavigate();
-  const d = useSelector((state) => state.sms.teachersData);
+  //const d = useSelector((state) => state.sms.teachersData);
   const dispatch = useDispatch();
   const submitHandler = async(e) => {
     e.preventDefault();
-  
-
-    console.log(d);
-    const response = await axios.post(
+  await axios.post(
         "http://localhost:8080/teacherCreate",
         data,
       );
+      const data=await axios.get(`http://localhost:8080/teacher`);
+      dispatch(addTeacher(data.data.data))
     alert("Added Successfully");
     navigate("/teacherList");
   };

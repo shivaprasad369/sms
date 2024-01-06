@@ -10,7 +10,7 @@ export default function TeacherList() {
   console.log(d)
   const deleteHandler = async (id) => {
     console.log(id);
-    const res = await axios.delete(`http://localhost:8080/teacherDelete/${id}`);
+    await axios.delete(`http://localhost:8080/teacherDelete/${id}`);
   };
   const fetchData=async()=>{
     

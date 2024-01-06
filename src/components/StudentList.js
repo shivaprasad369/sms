@@ -1,7 +1,7 @@
-import React, { useCallback, useEffect } from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
-import { addStudent, addTeacher, details } from "../store";
+import { addStudent,details } from "../store";
 import { Link } from "react-router-dom";
 import axios from "axios";
 export default function StudentList() {
@@ -9,7 +9,7 @@ export default function StudentList() {
 
   const deleteHandler = async (id) => {
     console.log(id);
-    const res = await axios.delete(`http://localhost:8080/studDelete/${id}`);
+   await axios.delete(`http://localhost:8080/studDelete/${id}`);
   };
   const fetchData=async()=>{
     
@@ -21,7 +21,7 @@ export default function StudentList() {
     fetchData()
   })
   const data= useSelector((state) => state.sms.studentsData);
-  const detail = useSelector((state) => state.sms.detail);
+ // const detail = useSelector((state) => state.sms.detail);
   console.log(data);
   return (
     <Container>

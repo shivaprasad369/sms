@@ -50,7 +50,7 @@ export default function Navbar({ children }) {
   ) 
   useEffect( () => {
     funct()
-  });
+  },[funct]);
   return (
     <>
       {" "}
@@ -162,4 +162,5 @@ const Container = styled.div`
       }
     }
   }
+  @media
 `;

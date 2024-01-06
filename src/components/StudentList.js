@@ -19,7 +19,7 @@ export default function StudentList() {
   useEffect(()=>{
    
     fetchData()
-  })
+  },[fetchData])
   const data= useSelector((state) => state.sms.studentsData);
  // const detail = useSelector((state) => state.sms.detail);
   console.log(data);

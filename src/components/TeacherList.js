@@ -20,7 +20,7 @@ export default function TeacherList() {
   useEffect(()=>{
    
     fetchData()
-  })
+  },[fetchData])
   return (
     <Container>
       <table className="table">

@@ -21,8 +21,8 @@ export default function AddTeacher() {
         "http://localhost:8080/teacherCreate",
         data,
       );
-      const data=await axios.get(`http://localhost:8080/teacher`);
-      dispatch(addTeacher(data.data.data))
+      const data1=await axios.get(`http://localhost:8080/teacher`);
+      dispatch(addTeacher(data1.data.data))
     alert("Added Successfully");
     navigate("/teacherList");
   };

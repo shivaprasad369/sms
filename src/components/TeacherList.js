@@ -11,13 +11,13 @@ export default function TeacherList() {
   const deleteHandler = async (id) => {
     console.log(id);
     await axios.delete(`http://localhost:8080/teacherDelete/${id}`);
+    fetchData()
   };
   const fetchData=async()=>{
-    
     const data=await axios.get(`http://localhost:8080/teacher`);
     dispatch(addTeacher(data.data.data))
   }
-    fetchData()
+  fetchData()
   return (
     <Container>
       <table className="table">

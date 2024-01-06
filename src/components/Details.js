@@ -79,4 +79,9 @@ button{
   font-size:1.5rem;
   background-color:red;
 }
+@media only screen and (max-width: 600px) {
+  margin-top:20rem;
+  width:90%;
+  margin-left:1.5rem;
+}
 `;

@@ -16,6 +16,7 @@ export default function Home() {
   )
 }
 const Container=styled.div `
+
 display:flex-col;
 padding:4rem;
 margin:4rem;
@@ -33,5 +34,12 @@ gap:1.4rem;
     display:flex;
     font-size:1.2rem;
     padding:2rem;    
+}
+@media only screen and (max-width: 600px) {
+  margin-top:20rem;
+  width:90%;
+  margin-left:2rem;
+  padding:0;
+  padding:1rem;
 }
 `;

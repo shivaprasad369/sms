@@ -146,4 +146,19 @@ const Container = styled.div`
       }
     }
   }
+  @media only screen and (max-width: 600px) {
+    margin:0;
+    paggind:0;
+    background-color:white;
+   .content{
+     margin-top:20rem;
+     width:90%;
+     border-radius:1rem;
+     background-color:rgba(0,0,0,0.4);
+     padding:1rem;
+    form{
+
+    }
+   }
+  }
 `;

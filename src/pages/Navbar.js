@@ -12,45 +12,45 @@ export default function Navbar({ children }) {
     return () => (window.onscroll = null);
   };
   const dispatch = useDispatch();
-  const fetchData = useCallback(()=>
-  
-  async () => {
-    const {
-      data: { data },
-    } = await axios.get(`http://localhost:8080/student`);
+  const fetchData = useCallback(
+    () => async () => {
+      const {
+        data: { data },
+      } = await axios.get(`http://localhost:8080/student`);
 
-    //console.log(data)
-    return data;
-  },[]
-  )
-  const fetchTeacherData = useCallback(()=>
-  
-  async () => {
-    const {
-      data: { data },
-    } = await axios.get(`http://localhost:8080/teacher`);
-
-    console.log(data);
-    return data;
-  },[]
-  )
-  const funct=useCallback(()=>()=>
-
-{
-    try {
-      const data = fetchData();
-      const data1 = fetchTeacherData();
       //console.log(data)
-      dispatch(addStudent(data));
-      dispatch(addTeacher(data1));
-    } catch (error) {
-      console.log(error);
-    }
-  },[fetchData,fetchTeacherData,dispatch]
-  ) 
-  useEffect( () => {
-    funct()
-  },[funct]);
+      return data;
+    },
+    []
+  );
+  const fetchTeacherData = useCallback(
+    () => async () => {
+      const {
+        data: { data },
+      } = await axios.get(`http://localhost:8080/teacher`);
+
+      console.log(data);
+      return data;
+    },
+    []
+  );
+  const funct = useCallback(
+    () => () => {
+      try {
+        const data = fetchData();
+        const data1 = fetchTeacherData();
+        //console.log(data)
+        dispatch(addStudent(data));
+        dispatch(addTeacher(data1));
+      } catch (error) {
+        console.log(error);
+      }
+    },
+    [fetchData, fetchTeacherData, dispatch]
+  );
+  useEffect(() => {
+    funct();
+  }, [funct]);
   return (
     <>
       {" "}
@@ -162,12 +162,45 @@ const Container = styled.div`
       }
     }
   }
-  @media only screen and (max-width: 600px){
-
-    .content{
-
-      display:flex;
-      flex-direction:column;
+  @media only screen and (max-width: 600px) {
+    text-align:center;
+    transition:1s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    .content {
+      text-align:center;
+      ul{
+        transition:0.3s ease-in-out;
+        margin-top:0.4rem;
+        height: fit;
+        background-color: black;
+        display: flex;
+        flex-direction: column;
+        position:absolute;
+        width:90%;
+        margin-bottom:1rem;
+        background-color:gray;
+        li {
+          font-size: 1.2rem;
+          color: white;
+          
+          NavLink {
+            text-decoration: none;
+            color: yellow;
+          }
+          .active {
+            &:hover {
+              text-decoration: none;
+              color: yellow;
+            }
+            color: yellow;
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 0.3rem;
+            width:90%;
+            height: 100%;
+          }
+        }
+      }
     }
   }
 `;

@@ -86,4 +86,12 @@ export default function StudentList() {
 }
 const Container = styled.div`
   margin: 4rem;
+  @media only screen and (max-width: 600px) {
+    .table{
+      margin:0;
+      padding:0;
+
+      margin-top:20rem;
+    }
+  }
 `;

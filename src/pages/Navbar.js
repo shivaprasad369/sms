@@ -163,7 +163,11 @@ const Container = styled.div`
     }
   }
   @media only screen and (max-width: 600px){
-    display:flex;
-    flex-dirextion:row;
+
+    .content{
+
+      display:flex;
+      flex-direction:column;
+    }
   }
 `;

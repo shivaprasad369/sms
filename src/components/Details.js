@@ -1,9 +1,9 @@
 import React from 'react'
 import { useSelector } from 'react-redux';
-import { useNavigate, useParams } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import styled from 'styled-components';
 export default function Details() {
-  const id=useParams()
+
   const detail=useSelector((state)=>state.sms.detail);
   console.log(detail)
 const navigate=  useNavigate()

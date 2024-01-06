@@ -70,7 +70,7 @@ app.delete('/teacherDelete/:id',async(req,res)=>{
     res.send({Success:true,message:"Deleted data successfully",data})
 })
 
-mongoose.connect("mongodb://127.0.0.1:27017/School").then(()=>{
+mongoose.connect("mongodb+srv://Shivaprasad:Shivu%402000@cluster0.5wetoyi.mongodb.net/Student").then(()=>{
 console.log("db connected")
 app.listen(PORT,()=>{
     console.log("server is running")

@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
 import { addStudent,details } from "../store";
@@ -16,10 +16,10 @@ export default function StudentList() {
     const data=await axios.get(`http://localhost:8080/student`);
     dispatch(addStudent(data.data.data))
   }
-  useEffect(()=>{
+
    
-    fetchData()
-  },[fetchData])
+    fetchData();
+
   const data= useSelector((state) => state.sms.studentsData);
  // const detail = useSelector((state) => state.sms.detail);
   console.log(data);

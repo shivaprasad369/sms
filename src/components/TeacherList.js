@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
 import { addTeacher, details } from "../store";
@@ -17,10 +17,7 @@ export default function TeacherList() {
     const data=await axios.get(`http://localhost:8080/teacher`);
     dispatch(addTeacher(data.data.data))
   }
-  useEffect(()=>{
-   
     fetchData()
-  },[fetchData])
   return (
     <Container>
       <table className="table">
